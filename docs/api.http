@@ -1,0 +1,85 @@
+@base = http://127.0.0.1:8000
+@examId = 1
+@questionId = 1
+@optionId = 2
+
+### List exams
+GET {{base}}/api/exams/
+
+### Create exam (copy the returned ID to examId)
+POST {{base}}/api/exams/
+Content-Type: application/json
+
+{"title":"Python","description":"HTTP practice"}
+
+### Retrieve exam
+GET {{base}}/api/exams/{{examId}}/
+
+### Update exam
+PATCH {{base}}/api/exams/{{examId}}/
+Content-Type: application/json
+
+{"description":"Updated"}
+
+### Create question (copy the returned IDs)
+POST {{base}}/api/questions/
+Content-Type: application/json
+
+{"exam":{{examId}},"text":"What is Django?","options":[{"text":"Framework","is_correct":true},{"text":"Database","is_correct":false}]}
+
+### List and search
+GET {{base}}/api/questions/?exam={{examId}}&search=Django
+
+### Retrieve question
+GET {{base}}/api/questions/{{questionId}}/
+
+### Update question
+PATCH {{base}}/api/questions/{{questionId}}/
+Content-Type: application/json
+
+{"text":"Django framework?"}
+
+### Create incorrect option
+POST {{base}}/api/options/
+Content-Type: application/json
+
+{"question":{{questionId}},"text":"Language","is_correct":false}
+
+### List options
+GET {{base}}/api/options/
+
+### Retrieve option
+GET {{base}}/api/options/{{optionId}}/
+
+### Update option
+PATCH {{base}}/api/options/{{optionId}}/
+Content-Type: application/json
+
+{"text":"Operating system"}
+
+### Required field error: 400
+POST {{base}}/api/exams/
+Content-Type: application/json
+
+{}
+
+### Type error: 400
+POST {{base}}/api/questions/
+Content-Type: application/json
+
+{"exam":"bad","text":"Type test","options":[{"text":"Answer","is_correct":true}]}
+
+### Correct answer validation error: 400
+POST {{base}}/api/questions/
+Content-Type: application/json
+
+{"exam":{{examId}},"text":"Invalid question","options":[{"text":"No correct answer","is_correct":false}]}
+
+### Delete incorrect option: 204
+DELETE {{base}}/api/options/{{optionId}}/
+
+### Delete question: 204
+DELETE {{base}}/api/questions/{{questionId}}/
+
+### Delete exam: 204
+DELETE {{base}}/api/exams/{{examId}}/

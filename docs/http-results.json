@@ -1,0 +1,875 @@
+[
+  {
+    "method": "GET",
+    "path": "/api/",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "exams": "http://127.0.0.1:50307/api/exams/",
+      "questions": "http://127.0.0.1:50307/api/questions/",
+      "options": "http://127.0.0.1:50307/api/options/"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/exams/",
+    "body": {
+      "title": "Python"
+    },
+    "expected": 201,
+    "status": 201,
+    "response": {
+      "id": 1,
+      "title": "Python",
+      "description": "",
+      "created_at": "2026-10-28T00:13:23.448496-05:00"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/exams/",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "count": 1,
+      "next": null,
+      "previous": null,
+      "results": [
+        {
+          "id": 1,
+          "title": "Python",
+          "description": "",
+          "created_at": "2026-10-28T00:13:23.448496-05:00"
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/exams/1/",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "id": 1,
+      "title": "Python",
+      "description": "",
+      "created_at": "2026-10-28T00:13:23.448496-05:00"
+    }
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/exams/1/",
+    "body": {
+      "description": "HTTP test"
+    },
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "id": 1,
+      "title": "Python",
+      "description": "HTTP test",
+      "created_at": "2026-10-28T00:13:23.448496-05:00"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/questions/",
+    "body": {
+      "exam": 1,
+      "text": "What is Django?",
+      "options": [
+        {
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "text": "Database",
+          "is_correct": false
+        }
+      ]
+    },
+    "expected": 201,
+    "status": 201,
+    "response": {
+      "id": 1,
+      "exam": 1,
+      "text": "What is Django?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "id": 2,
+          "text": "Database",
+          "is_correct": false
+        }
+      ],
+      "created_at": "2026-10-28T00:13:23.479422-05:00"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/questions/",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "count": 1,
+      "next": null,
+      "previous": null,
+      "results": [
+        {
+          "id": 1,
+          "exam": 1,
+          "text": "What is Django?",
+          "options": [
+            {
+              "id": 1,
+              "text": "Framework",
+              "is_correct": true
+            },
+            {
+              "id": 2,
+              "text": "Database",
+              "is_correct": false
+            }
+          ],
+          "created_at": "2026-10-28T00:13:23.479422-05:00"
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/questions/1/",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "id": 1,
+      "exam": 1,
+      "text": "What is Django?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "id": 2,
+          "text": "Database",
+          "is_correct": false
+        }
+      ],
+      "created_at": "2026-10-28T00:13:23.479422-05:00"
+    }
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/questions/1/",
+    "body": {
+      "text": "Django framework?"
+    },
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "id": 1,
+      "exam": 1,
+      "text": "Django framework?",
+      "options": [
+        {
+          "id": 1,
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "id": 2,
+          "text": "Database",
+          "is_correct": false
+        }
+      ],
+      "created_at": "2026-10-28T00:13:23.479422-05:00"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/options/",
+    "body": {
+      "question": 1,
+      "text": "Language",
+      "is_correct": false
+    },
+    "expected": 201,
+    "status": 201,
+    "response": {
+      "id": 3,
+      "question": 1,
+      "text": "Language",
+      "is_correct": false
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/options/",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "count": 3,
+      "next": null,
+      "previous": null,
+      "results": [
+        {
+          "id": 1,
+          "question": 1,
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "id": 2,
+          "question": 1,
+          "text": "Database",
+          "is_correct": false
+        },
+        {
+          "id": 3,
+          "question": 1,
+          "text": "Language",
+          "is_correct": false
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/options/3/",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "id": 3,
+      "question": 1,
+      "text": "Language",
+      "is_correct": false
+    }
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/options/3/",
+    "body": {
+      "text": "Operating system"
+    },
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "id": 3,
+      "question": 1,
+      "text": "Operating system",
+      "is_correct": false
+    }
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/options/3/",
+    "body": null,
+    "expected": 204,
+    "status": 204,
+    "response": ""
+  },
+  {
+    "method": "GET",
+    "path": "/api/options/3/",
+    "body": null,
+    "expected": 404,
+    "status": 404,
+    "response": {
+      "detail": "No Option matches the given query."
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/exams/",
+    "body": {},
+    "expected": 400,
+    "status": 400,
+    "response": {
+      "title": [
+        "Este campo es requerido."
+      ]
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/questions/",
+    "body": {
+      "exam": "bad",
+      "text": "What is Django?",
+      "options": [
+        {
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "text": "Database",
+          "is_correct": false
+        }
+      ]
+    },
+    "expected": 400,
+    "status": 400,
+    "response": {
+      "exam": [
+        "Tipo incorrecto. Se esperaba valor de clave primaria y se recibió str."
+      ]
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/questions/",
+    "body": {
+      "exam": 1,
+      "text": "What is Django?",
+      "options": [
+        {
+          "text": "No correct answer"
+        }
+      ]
+    },
+    "expected": 400,
+    "status": 400,
+    "response": {
+      "options": [
+        "Exactly one option must be correct."
+      ]
+    }
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/options/1/",
+    "body": null,
+    "expected": 400,
+    "status": 400,
+    "response": {
+      "is_correct": "Cannot delete the correct option. Replace the question's nested options first."
+    }
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/questions/1/",
+    "body": {
+      "options": []
+    },
+    "expected": 400,
+    "status": 400,
+    "response": {
+      "options": [
+        "Exactly one option must be correct."
+      ]
+    }
+  },
+  {
+    "method": "PATCH",
+    "path": "/api/questions/1/",
+    "body": {
+      "options": [
+        {
+          "text": "New correct",
+          "is_correct": true
+        }
+      ]
+    },
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "id": 1,
+      "exam": 1,
+      "text": "Django framework?",
+      "options": [
+        {
+          "id": 4,
+          "text": "New correct",
+          "is_correct": true
+        }
+      ],
+      "created_at": "2026-10-28T00:13:23.479422-05:00"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/questions/",
+    "body": {
+      "exam": 1,
+      "text": "Django 0",
+      "options": [
+        {
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "text": "Database",
+          "is_correct": false
+        }
+      ]
+    },
+    "expected": 201,
+    "status": 201,
+    "response": {
+      "id": 2,
+      "exam": 1,
+      "text": "Django 0",
+      "options": [
+        {
+          "id": 5,
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "id": 6,
+          "text": "Database",
+          "is_correct": false
+        }
+      ],
+      "created_at": "2026-10-28T00:13:23.580275-05:00"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/questions/",
+    "body": {
+      "exam": 1,
+      "text": "Django 1",
+      "options": [
+        {
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "text": "Database",
+          "is_correct": false
+        }
+      ]
+    },
+    "expected": 201,
+    "status": 201,
+    "response": {
+      "id": 3,
+      "exam": 1,
+      "text": "Django 1",
+      "options": [
+        {
+          "id": 7,
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "id": 8,
+          "text": "Database",
+          "is_correct": false
+        }
+      ],
+      "created_at": "2026-10-28T00:13:23.588410-05:00"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/questions/",
+    "body": {
+      "exam": 1,
+      "text": "Django 2",
+      "options": [
+        {
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "text": "Database",
+          "is_correct": false
+        }
+      ]
+    },
+    "expected": 201,
+    "status": 201,
+    "response": {
+      "id": 4,
+      "exam": 1,
+      "text": "Django 2",
+      "options": [
+        {
+          "id": 9,
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "id": 10,
+          "text": "Database",
+          "is_correct": false
+        }
+      ],
+      "created_at": "2026-10-28T00:13:23.596348-05:00"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/questions/",
+    "body": {
+      "exam": 1,
+      "text": "Django 3",
+      "options": [
+        {
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "text": "Database",
+          "is_correct": false
+        }
+      ]
+    },
+    "expected": 201,
+    "status": 201,
+    "response": {
+      "id": 5,
+      "exam": 1,
+      "text": "Django 3",
+      "options": [
+        {
+          "id": 11,
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "id": 12,
+          "text": "Database",
+          "is_correct": false
+        }
+      ],
+      "created_at": "2026-10-28T00:13:23.604745-05:00"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/questions/",
+    "body": {
+      "exam": 1,
+      "text": "Django 4",
+      "options": [
+        {
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "text": "Database",
+          "is_correct": false
+        }
+      ]
+    },
+    "expected": 201,
+    "status": 201,
+    "response": {
+      "id": 6,
+      "exam": 1,
+      "text": "Django 4",
+      "options": [
+        {
+          "id": 13,
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "id": 14,
+          "text": "Database",
+          "is_correct": false
+        }
+      ],
+      "created_at": "2026-10-28T00:13:23.612260-05:00"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/questions/",
+    "body": {
+      "exam": 1,
+      "text": "Django 5",
+      "options": [
+        {
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "text": "Database",
+          "is_correct": false
+        }
+      ]
+    },
+    "expected": 201,
+    "status": 201,
+    "response": {
+      "id": 7,
+      "exam": 1,
+      "text": "Django 5",
+      "options": [
+        {
+          "id": 15,
+          "text": "Framework",
+          "is_correct": true
+        },
+        {
+          "id": 16,
+          "text": "Database",
+          "is_correct": false
+        }
+      ],
+      "created_at": "2026-10-28T00:13:23.619604-05:00"
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/questions/?exam=1&search=Django",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "count": 7,
+      "next": "http://127.0.0.1:50307/api/questions/?exam=1&page=2&search=Django",
+      "previous": null,
+      "results": [
+        {
+          "id": 1,
+          "exam": 1,
+          "text": "Django framework?",
+          "options": [
+            {
+              "id": 4,
+              "text": "New correct",
+              "is_correct": true
+            }
+          ],
+          "created_at": "2026-10-28T00:13:23.479422-05:00"
+        },
+        {
+          "id": 2,
+          "exam": 1,
+          "text": "Django 0",
+          "options": [
+            {
+              "id": 5,
+              "text": "Framework",
+              "is_correct": true
+            },
+            {
+              "id": 6,
+              "text": "Database",
+              "is_correct": false
+            }
+          ],
+          "created_at": "2026-10-28T00:13:23.580275-05:00"
+        },
+        {
+          "id": 3,
+          "exam": 1,
+          "text": "Django 1",
+          "options": [
+            {
+              "id": 7,
+              "text": "Framework",
+              "is_correct": true
+            },
+            {
+              "id": 8,
+              "text": "Database",
+              "is_correct": false
+            }
+          ],
+          "created_at": "2026-10-28T00:13:23.588410-05:00"
+        },
+        {
+          "id": 4,
+          "exam": 1,
+          "text": "Django 2",
+          "options": [
+            {
+              "id": 9,
+              "text": "Framework",
+              "is_correct": true
+            },
+            {
+              "id": 10,
+              "text": "Database",
+              "is_correct": false
+            }
+          ],
+          "created_at": "2026-10-28T00:13:23.596348-05:00"
+        },
+        {
+          "id": 5,
+          "exam": 1,
+          "text": "Django 3",
+          "options": [
+            {
+              "id": 11,
+              "text": "Framework",
+              "is_correct": true
+            },
+            {
+              "id": 12,
+              "text": "Database",
+              "is_correct": false
+            }
+          ],
+          "created_at": "2026-10-28T00:13:23.604745-05:00"
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/questions/?page=2",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "count": 7,
+      "next": null,
+      "previous": "http://127.0.0.1:50307/api/questions/",
+      "results": [
+        {
+          "id": 6,
+          "exam": 1,
+          "text": "Django 4",
+          "options": [
+            {
+              "id": 13,
+              "text": "Framework",
+              "is_correct": true
+            },
+            {
+              "id": 14,
+              "text": "Database",
+              "is_correct": false
+            }
+          ],
+          "created_at": "2026-10-28T00:13:23.612260-05:00"
+        },
+        {
+          "id": 7,
+          "exam": 1,
+          "text": "Django 5",
+          "options": [
+            {
+              "id": 15,
+              "text": "Framework",
+              "is_correct": true
+            },
+            {
+              "id": 16,
+              "text": "Database",
+              "is_correct": false
+            }
+          ],
+          "created_at": "2026-10-28T00:13:23.619604-05:00"
+        }
+      ]
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/questions/?search=absent",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "count": 0,
+      "next": null,
+      "previous": null,
+      "results": []
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/questions/?exam=99999",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": {
+      "count": 0,
+      "next": null,
+      "previous": null,
+      "results": []
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/questions/?exam=bad",
+    "body": null,
+    "expected": 400,
+    "status": 400,
+    "response": {
+      "exam": "Use a positive integer."
+    }
+  },
+  {
+    "method": "GET",
+    "path": "/api/exams/",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": "Browsable API HTML"
+  },
+  {
+    "method": "GET",
+    "path": "/api/questions/",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": "Browsable API HTML"
+  },
+  {
+    "method": "GET",
+    "path": "/api/options/",
+    "body": null,
+    "expected": 200,
+    "status": 200,
+    "response": "Browsable API HTML"
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/questions/1/",
+    "body": null,
+    "expected": 204,
+    "status": 204,
+    "response": ""
+  },
+  {
+    "method": "GET",
+    "path": "/api/questions/1/",
+    "body": null,
+    "expected": 404,
+    "status": 404,
+    "response": {
+      "detail": "No Question matches the given query."
+    }
+  },
+  {
+    "method": "DELETE",
+    "path": "/api/exams/1/",
+    "body": null,
+    "expected": 204,
+    "status": 204,
+    "response": ""
+  },
+  {
+    "method": "GET",
+    "path": "/api/exams/1/",
+    "body": null,
+    "expected": 404,
+    "status": 404,
+    "response": {
+      "detail": "No Exam matches the given query."
+    }
+  }
+]
